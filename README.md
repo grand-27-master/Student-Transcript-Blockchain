@@ -40,3 +40,5 @@ This is a decentralized application (dApp) built on Ethereum blockchain that all
 Contributions are always welcome! If you have any ideas, suggestions, or bug reports, please open an issue or a pull request.
 
 
+## License
+This project is licensed under the MIT License
