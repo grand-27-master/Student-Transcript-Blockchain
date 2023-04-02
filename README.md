@@ -35,3 +35,8 @@ This is a decentralized application (dApp) built on Ethereum blockchain that all
 <li>View added transcripts in the "Transcripts" table</li>
 
 <li>Click the "View" button for a particular transcript to view its details</li></ul>
+
+## Contributing
+Contributions are always welcome! If you have any ideas, suggestions, or bug reports, please open an issue or a pull request.
+
+
