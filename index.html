@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Transcript System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <h1>Digital Transcript</h1>
+
+    <h2>Add Transcript</h2>
+    <form onsubmit="event.preventDefault(); addTranscript();">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="courses">Courses:</label>
+      <textarea id="courses" name="courses" rows="4" cols="50" required></textarea><br><br>
+
+      <label for="grades">Grades:</label>
+      <textarea id="grades" name="grades" rows="4" cols="50" required></textarea><br><br>
+
+      <label for="issuedBy">Issued By:</label>
+      <input type="text" id="issuedBy" name="issuedBy" required><br><br>
+
+      <label for="issuedOn">Issued On:</label>
+      <input type="date" id="issuedOn" name="issuedOn" required><br><br>
+
+      <input type="submit" value="Add Transcript">
+    </form>
+
+    <h2>Transcripts</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Courses</th>
+        <th>Grades</th>
+        <th>Issued By</th>
+        <th>Issued On</th>
+      </tr>
+      <tbody id="transcriptsTable"></tbody>
+    </table>
+  </body>
+</html>
