@@ -7,3 +7,9 @@ This is a decentralized application (dApp) built on Ethereum blockchain that all
 <li>Ganache</li>
 <li>MetaMask</li>
 </ol>
+
+## Installation
+1) Clone the repository and navigate to the project directory.
+
+`git clone https://github.com/your-username/digital-transcript-dapp.git
+cd digital-transcript-dapp`
