@@ -91,7 +91,7 @@ const abi = [
 ];
 
 // Load the contract address
-const contractAddress = '0x161330867F4b6D63DDb34297562B966da895A987';
+const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
 
 // Create a new instance of the contract using the loaded ABI and address
 const contract = new web3.eth.Contract(abi, contractAddress);

@@ -4,42 +4,68 @@
     <title>Digital Transcript</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
     <h1>Digital Transcript System</h1>
-
     <h2>Add Transcript</h2>
-    <form onsubmit="event.preventDefault(); addTranscript();">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required><br><br>
+<form onsubmit="event.preventDefault(); addTranscript();">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br><br>
 
-      <label for="courses">Courses:</label>
-      <textarea id="courses" name="courses" rows="4" cols="50" required></textarea><br><br>
+  <label for="courses">Courses:</label>
+  <textarea id="courses" name="courses" rows="4" cols="50" required></textarea><br><br>
 
-      <label for="grades">Grades:</label>
-      <textarea id="grades" name="grades" rows="4" cols="50" required></textarea><br><br>
+  <label for="grades">Grades:</label>
+  <textarea id="grades" name="grades" rows="4" cols="50" required></textarea><br><br>
 
-      <label for="issuedBy">Issued By:</label>
-      <input type="text" id="issuedBy" name="issuedBy" required><br><br>
+  <label for="issuedBy">Issued By:</label>
+  <input type="text" id="issuedBy" name="issuedBy" required><br><br>
 
-      <label for="issuedOn">Issued On:</label>
-      <input type="date" id="issuedOn" name="issuedOn" required><br><br>
+  <label for="issuedOn">Issued On:</label>
+  <input type="date" id="issuedOn" name="issuedOn" required><br><br>
 
-      <input type="submit" value="Add Transcript">
-    </form>
+  <input type="submit" value="Add Transcript">
+</form>
 
-    <h2>Transcripts</h2>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Courses</th>
-        <th>Grades</th>
-        <th>Issued By</th>
-        <th>Issued On</th>
-      </tr>
-      <tbody id="transcriptsTable"></tbody>
-    </table>
-  </body>
-</html>
+<h2>Transcripts</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Courses</th>
+    <th>Grades</th>
+    <th>Issued By</th>
+    <th>Issued On</th>
+  </tr>
+  <tbody id="transcriptsTable"></tbody>
+</table>
+
+<h2>View Transcript</h2>
+<form onsubmit="event.preventDefault(); viewTranscript();">
+  <label for="transcriptId">Transcript ID:</label>
+  <input type="number" id="transcriptId" name="transcriptId" required><br><br>
+  <input type="submit" value="View Transcript">
+</form>
+
+<div id="transcriptDetails"></div>
+
+<script>
+  async function viewTranscript() {
+    const transcriptId = document.getElementById("transcriptId").value;
+
+    // Call the contract's getTranscript() method to get the transcript details
+    const transcript = await contract.methods.getTranscript(transcriptId)
+      .call({ from: '0x0d2786065d8CA8Ac69b6B10EC83FD7bd5bf7ecee' }) // Replace with your account address
+
+    // Display the transcript details on the page
+    const transcriptDetailsDiv = document.getElementById("transcriptDetails");
+    transcriptDetailsDiv.innerHTML = `
+      <p><strong>Name:</strong> ${transcript[0]}</p>
+      <p><strong>Courses:</strong> ${transcript[1].join(", ")}</p>
+      <p><strong>Grades:</strong> ${transcript[2].join(", ")}</p>
+      <p><strong>Issued By:</strong> ${transcript[3]}</p>
+      <p><strong>Issued On:</strong> ${new Date(transcript[4] * 1000)}</p>
+    `;
+  }
+</script>
