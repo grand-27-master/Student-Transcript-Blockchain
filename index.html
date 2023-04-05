@@ -51,6 +51,26 @@
 <div id="transcriptDetails"></div>
 
 <script>
+  async function addTranscript() {
+  const name = document.getElementById("name").value;
+  const courses = document.getElementById("courses").value.split("\n");
+  const grades = document.getElementById("grades").value.split("\n");
+  const issuedBy = document.getElementById("issuedBy").value;
+  const issuedOn = Math.floor(new Date(document.getElementById("issuedOn").value) / 1000);
+
+  // Call the contract's addTranscript() method to add the transcript to the blockchain
+  await contract.methods.addTranscript(name, courses, grades, issuedBy, issuedOn)
+    .send({ from: '0x0d2786065d8CA8Ac69b6B10EC83FD7bd5bf7ecee' }) // Replace with your account address
+
+  // Display a success message on the page
+  const successMessage = document.createElement("p");
+  successMessage.innerText = "Transcript added successfully.";
+  document.body.appendChild(successMessage);
+}
+
+</script>
+
+<script>
   async function viewTranscript() {
     const transcriptId = document.getElementById("transcriptId").value;
 
